@@ -1,0 +1,78 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+
+[project]
+name = "3d-led-map"
+version = "1.0.0"
+
+dependencies = [
+    "numpy",
+    "opencv-python",
+    "tqdm",
+    "open3d",
+    "pycolmap==3.11.1", # 2 track is broken on > 3.12. see https://github.com/TheMariday/marimapper/issues/79
+    "pyserial",          # required by fcmega
+    "pixelblaze-client", # required by pixelblaze
+    "requests"           # required by wled
+]
+
+classifiers = [
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+requires-python = ">=3.9,<3.13"
+
+maintainers = [
+  {name = "trobertson"},
+]
+description = "3D LED mapper with extended features: camera orientation, brightness-based alignment, and LED patching. Based on marimapper."
+readme = "README.md"
+license = {file = "LICENSE"}
+
+
+[project.optional-dependencies]
+develop = [
+    "pytest",
+    "pytest-cov",
+    "black",
+    "flake8",
+    "flake8-bugbear"
+    ]
+
+[project.urls]
+Homepage = "https://github.com/trobertson/3d-led-map"
+Documentation = "https://github.com/trobertson/3d-led-map"
+Repository = "https://github.com/trobertson/3d-led-map.git"
+
+[project.scripts]
+marimapper = "marimapper.scripts.scanner_cli:main"
+marimapper_check_camera = "marimapper.scripts.check_camera_cli:main"
+marimapper_check_backend ="marimapper.scripts.check_backend_cli:main"
+marimapper_upload_mapping_to_pixelblaze = "marimapper.scripts.upload_map_to_pixelblaze_cli:main"
+marimapper_patch_leds = "marimapper.scripts.patch_leds_cli:main"
+
+
+[tool.coverage.run]
+omit = [
+    "*/__init__.py",
+    "*/__main__.py",
+    "marimapper/backends/*",
+    "marimapper/scripts/*",
+    "marimapper/pycolmap_tools/*",
+    ".venv/*"
+    ]
+
+[tool.black]
+exclude = '''
+(/(
+    | venv
+    | .venv
+    | marimapper/pycolmap_tools
+)/)
+'''

@@ -1,0 +1,118 @@
+import cv2
+from multiprocessing import get_logger
+
+logger = get_logger()
+
+
+class CameraSettings:
+
+    def __init__(self, camera):
+        self.af_mode = camera.get_af_mode()
+        self.focus = camera.get_focus()
+        self.exposure_mode = camera.get_exposure_mode()
+        self.exposure = camera.get_exposure()
+        self.gain = camera.get_gain()
+
+    def apply(self, camera):
+        camera.set_autofocus(self.af_mode, self.focus)
+        camera.set_exposure_mode(self.exposure_mode)
+        camera.set_gain(self.gain)
+        camera.set_exposure(self.exposure)
+
+
+class Camera:
+
+    def __init__(self, device_id, orientation="landscape"):
+        logger.info(f"Connecting to device {device_id} ...")
+        self.device_id = device_id
+        self.orientation = orientation
+
+        if orientation not in ["landscape", "portrait"]:
+            raise ValueError(f"Invalid orientation: {orientation}. Must be 'landscape' or 'portrait'")
+
+        logger.info(f"Camera orientation set to: {orientation}")
+
+        for capture_method in [cv2.CAP_DSHOW, cv2.CAP_V4L2, cv2.CAP_ANY]:
+            self.device = cv2.VideoCapture(device_id, capture_method)
+            if self.device.isOpened():
+                logger.debug(
+                    f"Connected to device {device_id} with capture method {capture_method}"
+                )
+                break
+
+        if not self.device.isOpened():
+            raise RuntimeError(f"Failed to connect to camera {device_id}")
+
+        self.default_settings = CameraSettings(self)
+
+    def reset(self):
+        self.default_settings.apply(self)
+
+    def get_af_mode(self):
+        return int(self.device.get(cv2.CAP_PROP_AUTOFOCUS))
+
+    def get_focus(self):
+        return int(self.device.get(cv2.CAP_PROP_FOCUS))
+
+    def get_exposure_mode(self):
+        return int(self.device.get(cv2.CAP_PROP_AUTO_EXPOSURE))
+
+    def get_exposure(self):
+        return int(self.device.get(cv2.CAP_PROP_EXPOSURE))
+
+    def get_gain(self):
+        return int(self.device.get(cv2.CAP_PROP_GAIN))
+
+    def set_autofocus(self, mode, focus=0):
+
+        logger.debug(f"Setting autofocus to mode {mode} with focus {focus}")
+
+        if not self.device.set(cv2.CAP_PROP_AUTOFOCUS, mode):
+            logger.info(f"Failed to set autofocus to {mode}")
+
+        if not self.device.set(cv2.CAP_PROP_FOCUS, focus):
+            logger.info(f"Failed to set focus to {focus}")
+
+    def set_exposure_mode(self, mode):
+
+        logger.debug(f"Setting exposure to mode {mode}")
+
+        if not self.device.set(cv2.CAP_PROP_AUTO_EXPOSURE, mode):
+            logger.info(f"Failed to put camera into manual exposure mode {mode}")
+
+    def set_gain(self, gain):
+
+        logger.debug(f"Setting gain to {gain}")
+
+        if not self.device.set(cv2.CAP_PROP_GAIN, gain):
+            logger.info(f"failed to set camera gain to {gain}")
+
+    def set_exposure(self, exposure: int) -> bool:
+
+        logger.debug(f"Setting exposure to {exposure}")
+
+        if not self.device.set(cv2.CAP_PROP_EXPOSURE, exposure):
+            logger.info(f"Failed to set exposure to {exposure}")
+            return False
+
+        return True
+
+    def eat(self, count=30):
+        for _ in range(count):
+            self.read()
+
+    def rotate_image(self, image):
+        """Rotate image 90 degrees clockwise for portrait orientation"""
+        if self.orientation == "portrait":
+            return cv2.rotate(image, cv2.ROTATE_90_CLOCKWISE)
+        return image
+
+    def read(self):
+        ret_val, image = self.device.read()
+        if not ret_val:
+            raise Exception("Failed to read image")
+
+        # Apply orientation rotation
+        image = self.rotate_image(image)
+
+        return image
