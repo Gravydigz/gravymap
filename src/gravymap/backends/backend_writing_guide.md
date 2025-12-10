@@ -55,13 +55,13 @@ def my_backend_factory(args: argparse.Namespace):
 
 # Step 4: Adding it to the list of known backends
 
-In `marimapper/backends/backend_utils.py` there are two dictionaries, 
+In `src/gravymap/backends/backend_utils.py` there are two dictionaries, 
 one with the factories, and the other with the arg setters.
 
 Add your 
 
 ```python
-from marimapper.backends.my_backend import my_backend
+from gravymap.backends.my_backend import my_backend
 
 backend_factories = {
     ...

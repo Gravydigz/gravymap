@@ -1,10 +1,10 @@
-from marimapper.backends.custom import custom_backend
-from marimapper.backends.dummy import dummy_backend
-from marimapper.backends.fadecandy import fadecandy_backend
-from marimapper.backends.fcmega import fcmega_backend
-from marimapper.backends.pixelblaze import pixelblaze_backend
-from marimapper.backends.wled import wled_backend
-from marimapper.backends.artnet import artnet_backend
+from gravymap.backends.custom import custom_backend
+from gravymap.backends.dummy import dummy_backend
+from gravymap.backends.fadecandy import fadecandy_backend
+from gravymap.backends.fcmega import fcmega_backend
+from gravymap.backends.pixelblaze import pixelblaze_backend
+from gravymap.backends.wled import wled_backend
+from gravymap.backends.artnet import artnet_backend
 
 backend_factories = {
     "custom": custom_backend.custom_backend_factory,

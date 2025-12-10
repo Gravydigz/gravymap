@@ -1,5 +1,5 @@
 import os
-from marimapper.led import Point2D, LED3D, LED2D
+from gravymap.led import Point2D, LED3D, LED2D
 import typing
 from pathlib import Path
 

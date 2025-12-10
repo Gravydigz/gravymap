@@ -7,17 +7,17 @@ Howeverrrr, it's not great, even in ideal environments.
 Keep it simple, keep it reliable.
 """
 
-from marimapper.camera import Camera
-from marimapper.detector import show_image
-from marimapper.led import LED2D, Point2D
-from marimapper.timeout_controller import TimeoutController
-from marimapper.queues import Queue2D, DetectionControlEnum
+from gravymap.camera import Camera
+from gravymap.detector import show_image
+from gravymap.led import LED2D, Point2D
+from gravymap.timeout_controller import TimeoutController
+from gravymap.queues import Queue2D, DetectionControlEnum
 import logging
 from multiprocessing import get_logger
 import time
 import cv2
 
-from marimapper.utils import backend_black
+from gravymap.utils import backend_black
 
 
 logger = get_logger()
@@ -115,7 +115,7 @@ def detect_leds_fast(
 
 if __name__ == "__main__":
 
-    from marimapper.backends.fcmega import fcmega_backend
+    from gravymap.backends.fcmega import fcmega_backend
 
     logger.setLevel(logging.DEBUG)
 

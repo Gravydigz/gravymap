@@ -1,8 +1,8 @@
 from multiprocessing import Process, Event
-from marimapper.queues import Queue2D, Queue3D, DetectionControlEnum
-from marimapper.led import LED2D
+from gravymap.queues import Queue2D, Queue3D, DetectionControlEnum
+from gravymap.led import LED2D
 import time
-from marimapper.file_tools import write_3d_leds_to_file, write_2d_leds_to_file
+from gravymap.file_tools import write_3d_leds_to_file, write_2d_leds_to_file
 from pathlib import Path
 import os
 

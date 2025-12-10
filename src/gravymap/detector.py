@@ -6,9 +6,9 @@ from typing import Optional
 import numpy as np
 from multiprocessing import get_logger
 
-from marimapper.camera import Camera
-from marimapper.timeout_controller import TimeoutController
-from marimapper.led import Point2D, LED2D
+from gravymap.camera import Camera
+from gravymap.timeout_controller import TimeoutController
+from gravymap.led import Point2D, LED2D
 
 
 logger = get_logger()

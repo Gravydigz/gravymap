@@ -1,7 +1,7 @@
 import logging
 import importlib.metadata
-from marimapper.database_populator import camera_models, camera_model_radial
-from marimapper.backends.backend_utils import backend_arg_setters
+from gravymap.database_populator import camera_models, camera_model_radial
+from gravymap.backends.backend_utils import backend_arg_setters
 
 from pathlib import Path
 import os
@@ -116,8 +116,8 @@ def parse_common_args(args: argparse.Namespace, logger: logging.Logger) -> None:
     if args.verbose:
         logger.setLevel(logging.DEBUG)
     if args.version:
-        version = importlib.metadata.version("marimapper")
-        print(f"Marimapper version: {version}")
+        version = importlib.metadata.version("gravymap")
+        print(f"Gravymap version: {version}")
         quit()
 
     if not hasattr(args, "backend"):

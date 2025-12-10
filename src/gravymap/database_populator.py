@@ -5,8 +5,8 @@ from multiprocessing import get_logger
 from typing import Union
 import numpy as np
 
-from marimapper.pycolmap_tools.database import COLMAPDatabase
-from marimapper.led import LED2D, get_view_ids, get_leds_with_view
+from gravymap.pycolmap_tools.database import COLMAPDatabase
+from gravymap.led import LED2D, get_view_ids, get_leds_with_view
 
 ARBITRARY_SCALE = 2000
 logger = get_logger()

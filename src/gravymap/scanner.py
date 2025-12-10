@@ -1,17 +1,17 @@
 # DO NOT MOVE THIS
 # FATAL WEIRD CRASH IF THIS ISN'T IMPORTED FIRST DON'T ASK
-from marimapper.sfm_process import SFM
+from gravymap.sfm_process import SFM
 
 from tqdm import tqdm
 from pathlib import Path
-from marimapper.detector_process import DetectorProcess
-from marimapper.queues import Queue2D, DetectionControlEnum
+from gravymap.detector_process import DetectorProcess
+from gravymap.queues import Queue2D, DetectionControlEnum
 from multiprocessing import get_logger, set_start_method
-from marimapper.file_tools import get_all_2d_led_maps
-from marimapper.utils import get_user_confirmation
-from marimapper.visualize_process import VisualiseProcess
-from marimapper.led import last_view
-from marimapper.file_writer_process import FileWriterProcess
+from gravymap.file_tools import get_all_2d_led_maps
+from gravymap.utils import get_user_confirmation
+from gravymap.visualize_process import VisualiseProcess
+from gravymap.led import last_view
+from gravymap.file_writer_process import FileWriterProcess
 from functools import partial
 
 # This is to do with an issue with open3d bug in estimate normals

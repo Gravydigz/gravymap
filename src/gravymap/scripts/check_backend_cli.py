@@ -2,9 +2,9 @@ import argparse
 import time
 from multiprocessing import log_to_stderr
 import logging
-from marimapper.backends.backend_utils import backend_factories
-from marimapper.scripts.arg_tools import add_all_backend_parsers
-from marimapper.scripts.arg_tools import parse_common_args, add_common_args
+from gravymap.backends.backend_utils import backend_factories
+from gravymap.scripts.arg_tools import add_all_backend_parsers
+from gravymap.scripts.arg_tools import parse_common_args, add_common_args
 
 
 def main():

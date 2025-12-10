@@ -1,13 +1,13 @@
 import os
 from pathlib import Path
-from marimapper.pycolmap_tools.read_write_model import (
+from gravymap.pycolmap_tools.read_write_model import (
     qvec2rotmat,
     read_images_binary,
     read_points3D_binary,
 )
 
-from marimapper.led import LED3D, View
-from marimapper.led import remove_duplicates
+from gravymap.led import LED3D, View
+from gravymap.led import remove_duplicates
 
 
 def binary_to_led_map_3d(path: Path) -> list[LED3D]:

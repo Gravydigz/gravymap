@@ -1,4 +1,4 @@
-from marimapper.led import LED2D, LED3D, LEDInfo
+from gravymap.led import LED2D, LED3D, LEDInfo
 from multiprocessing import Queue
 from typing import Union, Any
 from enum import Enum

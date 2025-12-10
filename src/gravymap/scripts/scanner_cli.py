@@ -7,15 +7,15 @@ warnings.simplefilter(
 import multiprocessing
 import argparse
 import logging
-from marimapper.scripts.arg_tools import (
+from gravymap.scripts.arg_tools import (
     parse_common_args,
     add_common_args,
     add_camera_args,
     add_scanner_args,
     add_all_backend_parsers,
 )
-from marimapper.backends.backend_utils import backend_factories
-from marimapper.scanner import Scanner
+from gravymap.backends.backend_utils import backend_factories
+from gravymap.scanner import Scanner
 import os
 
 

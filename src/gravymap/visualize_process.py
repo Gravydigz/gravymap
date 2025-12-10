@@ -1,8 +1,8 @@
 import numpy as np
 import open3d
 from multiprocessing import get_logger, Process, Event
-from marimapper.queues import Queue3D
-from marimapper.led import LED3D, View, get_next, get_distance
+from gravymap.queues import Queue3D
+from gravymap.led import LED3D, View, get_next, get_distance
 import time
 
 logger = get_logger()

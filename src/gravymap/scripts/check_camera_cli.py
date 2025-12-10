@@ -1,12 +1,12 @@
 import argparse
 
-from marimapper.detector import find_led, set_cam_dark
-from marimapper.scripts.arg_tools import (
+from gravymap.detector import find_led, set_cam_dark
+from gravymap.scripts.arg_tools import (
     add_camera_args,
     add_common_args,
     parse_common_args,
 )
-from marimapper.camera import Camera
+from gravymap.camera import Camera
 from multiprocessing import log_to_stderr
 import logging
 

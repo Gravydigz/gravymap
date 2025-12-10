@@ -1,7 +1,7 @@
 import time
 import threading
 
-from marimapper.backends.fcmega.fcmega import FCMega
+from gravymap.backends.fcmega.fcmega import FCMega
 from functools import partial
 
 

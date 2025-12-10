@@ -1,5 +1,5 @@
 ﻿{
-  "name": "marimapper",
+  "name": "gravymap",
   "id": "GihLfEwy523cFgomM",
   "sources": {
     "main": "export var pixel_to_light = -1\nexport var turn_on=true\n\nexport function render(index) {\n  if(index == pixel_to_light && turn_on){\n    rgb(1,1,1)\n  } else{\n    rgb(0,0,0)\n  }\n}"

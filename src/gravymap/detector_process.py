@@ -1,6 +1,6 @@
 from multiprocessing import get_logger, Process, Queue, Event
 import time
-from marimapper.detector import (
+from gravymap.detector import (
     show_image,
     set_cam_default,
     Camera,
@@ -9,8 +9,8 @@ from marimapper.detector import (
     enable_and_find_led,
     find_led,
 )
-from marimapper.led import get_distance, get_color, LEDInfo
-from marimapper.queues import (
+from gravymap.led import get_distance, get_color, LEDInfo
+from gravymap.queues import (
     RequestDetectionsQueue,
     Queue2D,
     DetectionControlEnum,

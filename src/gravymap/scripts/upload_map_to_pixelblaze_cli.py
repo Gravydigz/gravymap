@@ -1,5 +1,5 @@
 import argparse
-from marimapper.backends.pixelblaze.upload_map_to_pixelblaze import (
+from gravymap.backends.pixelblaze.upload_map_to_pixelblaze import (
     upload_map_to_pixelblaze,
 )
 

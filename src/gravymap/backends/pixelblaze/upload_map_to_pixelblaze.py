@@ -1,8 +1,8 @@
 import csv
 
-from marimapper import utils
+from gravymap import utils
 from multiprocessing import get_logger
-from marimapper.backends.pixelblaze import pixelblaze_backend
+from gravymap.backends.pixelblaze import pixelblaze_backend
 
 logger = get_logger()
 

@@ -11,10 +11,10 @@ Control camera orientation for portrait or landscape mode.
 **Usage:**
 ```bash
 # Default landscape mode
-python -m marimapper.scripts.scanner_cli wled --ip 192.168.1.100
+python -m gravymap.scripts.scanner_cli wled --ip 192.168.1.100
 
 # Portrait mode (rotates camera 90° clockwise)
-python -m marimapper.scripts.scanner_cli wled --ip 192.168.1.100 --orientation portrait
+python -m gravymap.scripts.scanner_cli wled --ip 192.168.1.100 --orientation portrait
 ```
 
 **When to use:** Use portrait mode when your camera setup requires a 90-degree rotation for better LED coverage or viewing angle.
@@ -28,10 +28,10 @@ Specify the number of views to capture and get automatic rotation angle calculat
 **Usage:**
 ```bash
 # Capture 4 views (90° rotation between each view)
-python -m marimapper.scripts.scanner_cli wled --ip 192.168.1.100 --num_views 4
+python -m gravymap.scripts.scanner_cli wled --ip 192.168.1.100 --num_views 4
 
 # Capture 8 views (45° rotation between each view)
-python -m marimapper.scripts.scanner_cli wled --ip 192.168.1.100 --num_views 8
+python -m gravymap.scripts.scanner_cli wled --ip 192.168.1.100 --num_views 8
 ```
 
 **How it works:**
@@ -95,10 +95,10 @@ Fill in missing LEDs by interpolating positions from adjacent LEDs.
 **Usage:**
 ```bash
 # Basic usage
-marimapper_patch_leds led_map_3d.csv --total-leds 100
+gravymap_patch_leds led_map_3d.csv --total-leds 100
 
 # Specify custom output path
-marimapper_patch_leds led_map_3d.csv --total-leds 100 --output my_patched_map.csv
+gravymap_patch_leds led_map_3d.csv --total-leds 100 --output my_patched_map.csv
 ```
 
 **How it works:**
@@ -112,7 +112,7 @@ marimapper_patch_leds led_map_3d.csv --total-leds 100 --output my_patched_map.cs
 
 **Example:**
 ```
-$ marimapper_patch_leds led_map_3d.csv --total-leds 100
+$ gravymap_patch_leds led_map_3d.csv --total-leds 100
 
 Patching LEDs...
 Loaded 87 LEDs from led_map_3d.csv
@@ -133,7 +133,7 @@ Here's a complete workflow using all new features:
 
 ```bash
 # 1. Scan LEDs with portrait camera and 8 views
-python -m marimapper.scripts.scanner_cli wled \
+python -m gravymap.scripts.scanner_cli wled \
   --ip 192.168.1.100 \
   --orientation portrait \
   --num_views 8 \
@@ -144,7 +144,7 @@ python -m marimapper.scripts.scanner_cli wled \
 # "Rotate camera 45.0° clockwise and press Enter to continue."
 
 # 2. After scanning completes, patch any missing LEDs
-marimapper_patch_leds led_map_3d.csv --total-leds 100
+gravymap_patch_leds led_map_3d.csv --total-leds 100
 
 # 3. Result files:
 # - led_map_3d.csv (original scan with brightness data)
@@ -169,7 +169,7 @@ pip install .
 
 ### Main Scanner
 ```bash
-marimapper wled --ip <IP> [OPTIONS]
+gravymap wled --ip <IP> [OPTIONS]
 ```
 
 **New options:**
@@ -178,7 +178,7 @@ marimapper wled --ip <IP> [OPTIONS]
 
 ### LED Patching Tool
 ```bash
-marimapper_patch_leds INPUT_CSV --total-leds N [--output OUTPUT_CSV]
+gravymap_patch_leds INPUT_CSV --total-leds N [--output OUTPUT_CSV]
 ```
 
 **Arguments:**

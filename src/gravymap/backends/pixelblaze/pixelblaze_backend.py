@@ -37,13 +37,13 @@ class Backend:
         self.pb = pixelblaze.Pixelblaze(pixelblaze_ip)
         try:
             self.pb.setActivePatternByName(
-                "marimapper"
-            )  # Need to install marimapper.js to your pixelblaze
+                "gravymap"
+            )  # Need to install gravymap.js to your pixelblaze
         except TypeError as e:
             if "'NoneType' has no len()" in str(e):
                 raise RuntimeError(
-                    "Pixelblaze may have failed to find the effect 'marimapper'. "
-                    "Have you uploaded marimapper.epe to your controller?"
+                    "Pixelblaze may have failed to find the effect 'gravymap'. "
+                    "Have you uploaded gravymap.epe to your controller?"
                 )
             else:
                 raise e

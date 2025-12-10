@@ -8,7 +8,7 @@
 
 
 
-### Marimapper can use your webcam to map addressable LEDs to 3D space!
+### Gravymap can use your webcam to map addressable LEDs to 3D space!
 
 ![](docs/images/reconstruct_with_normals_and_strips.png)
 
@@ -30,23 +30,23 @@ Or if you're using Linux or Mac
 
 `curl -LsSf https://astral.sh/uv/install.sh | sh`
 
-Once UV is installed, install marimapper with
+Once UV is installed, install gravymap with
 
-`uv tool install git+https://github.com/TheMariday/marimapper`
+`uv tool install git+https://github.com/trobertson/gravymap`
 
 You can run the scripts anywhere by just typing them into a console.
 
 
-If you don't want to use UV, then Marimapper also supports PipX and pip
+If you don't want to use UV, then Gravymap also supports PipX and pip
 
 ## Step 1: Test your camera
 
 > [!TIP]
-> use `--help` for any MariMapper command to show a full list of additional arguments! 
+> use `--help` for any Gravymap command to show a full list of additional arguments! 
 > 
 > Some not even in this doc...
 
-Run `marimapper_check_camera` to ensure your camera is compatible with MariMapper, or check the list below:
+Run `gravymap_check_camera` to ensure your camera is compatible with Gravymap, or check the list below:
 
 - HP 4310 (settings may not revert)
 - Logitech C920
@@ -61,7 +61,7 @@ Test LED identification by turning down the lights and holding a torch or led up
 This should start with few warnings, no errors and produce a **very** dark image
 with a single crosshair on centered on your LED.
 
-Wrong webcam? MariMapper tools use `--device 0` by default, use `--device 1` to switch to your second webcam.
+Wrong webcam? Gravymap tools use `--device 0` by default, use `--device 1` to switch to your second webcam.
 
 ![alt text](docs/images/camera_check.png "Camera Check window")
 
@@ -73,7 +73,7 @@ Wrong webcam? MariMapper tools use `--device 0` by default, use `--device 1` to 
 > - `--threshold` - The lower the more detections, ranges between `0-255`,  defaults to `128`
 ## Step 2: Choose your backend
 
-For the Marimapper to communicate with your leds, it requires a backend.
+For Gravymap to communicate with your leds, it requires a backend.
 
 Please see below for documentation on how to run the following backends:
 
@@ -88,7 +88,7 @@ If your LED backend isn't supported, you need to write your own,
 
 
 > [!TIP]
-> use `marimapper wled --help` for any backend to show a full list of additional arguments 
+> use `gravymap wled --help` for any backend to show a full list of additional arguments 
 > such as server, channel, etc! 
 > 
 > Some not even in this doc...
@@ -102,7 +102,7 @@ even a small nudge can throw off the reconstructor!
 
 ## Step 4: [It's time to thunderize!](https://youtu.be/-5KJiHc3Nuc?t=121)
 
-In a new folder, run `marimapper fadecandy`
+In a new folder, run `gravymap fadecandy`
 
 and change `fadecandy` to whatever backend you're using and use `--help` to show more options
 
@@ -150,8 +150,8 @@ Make sure you've read this readme all the way through and do give those error me
 
 They should be able to tell you at least roughly what area is going wrong.
 
-If you want a lot more reading material, run `marimapper` with `-v` to put it into verbose mode.
-This will tell you pretty much everything marimapper is doing under the hood.
+If you want a lot more reading material, run `gravymap` with `-v` to put it into verbose mode.
+This will tell you pretty much everything gravymap is doing under the hood.
 Also good if you're just curious as to why *x* is taking so long!
 
 # Feedback
@@ -165,7 +165,7 @@ If you implement a backend that you think others might use,
 please raise a [pull request](https://github.com/TheMariday/marimapper/pulls) 
 or just drop me a message on [Telegram](https://t.me/themariday)!
 
-You can find a guide on how to write backends [here](marimapper\backends\backend_writing_guide.md)
+You can find a guide on how to write backends [here](src/gravymap/backends/backend_writing_guide.md)
 
 # Licensing
 

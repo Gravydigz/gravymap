@@ -2,14 +2,14 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 import pycolmap
 
-from marimapper.database_populator import (
+from gravymap.database_populator import (
     populate_database,
     camera_model_radial,
     camera_model_type,
 )
-from marimapper.led import LED3D, LED2D, get_view_ids
-from marimapper.model import binary_to_led_map_3d
-from marimapper.utils import SupressLogging
+from gravymap.led import LED3D, LED2D, get_view_ids
+from gravymap.model import binary_to_led_map_3d
+from gravymap.utils import SupressLogging
 from multiprocessing import get_logger
 
 logger = get_logger()

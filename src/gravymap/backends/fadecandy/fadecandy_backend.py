@@ -1,5 +1,5 @@
 import argparse
-from marimapper.backends.fadecandy import opc
+from gravymap.backends.fadecandy import opc
 from functools import partial
 
 
