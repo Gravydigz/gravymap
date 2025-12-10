@@ -32,7 +32,7 @@ Or if you're using Linux or Mac
 
 Once UV is installed, install gravymap with
 
-`uv tool install git+https://github.com/trobertson/gravymap`
+`uv tool install git+https://github.com/Gravydigz/gravymap`
 
 You can run the scripts anywhere by just typing them into a console.
 

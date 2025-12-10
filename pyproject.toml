@@ -46,9 +46,9 @@ develop = [
     ]
 
 [project.urls]
-Homepage = "https://github.com/trobertson/gravymap"
-Documentation = "https://github.com/trobertson/gravymap"
-Repository = "https://github.com/trobertson/gravymap.git"
+Homepage = "https://github.com/Gravydigz/gravymap"
+Documentation = "https://github.com/Gravydigz/gravymap"
+Repository = "https://github.com/Gravydigz/gravymap.git"
 
 [project.scripts]
 gravymap = "gravymap.scripts.scanner_cli:main"
