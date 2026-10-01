@@ -1,0 +1,40 @@
+#!/bin/bash
+set -e
+KEY="$HOME/.config/age/keys.txt"
+INDEX=".age-index"
+[ -f "$INDEX" ] || exit 0
+
+# fail closed — no key, no commit, rather than commit stale/unencrypted data
+if [ ! -f "$KEY" ]; then
+  echo "pre-commit: age key not found at $KEY — commit blocked" >&2
+  exit 1
+fi
+
+PUB=$(age-keygen -y "$KEY")
+
+while IFS= read -r path; do
+  [ -z "$path" ] && continue
+  case "$path" in \#*) continue ;; esac
+
+  # catch misconfiguration early: warn if a listed path isn't actually ignored
+  git check-ignore -q "$path" || \
+    echo "pre-commit: WARNING — $path is in .age-index but not gitignored" >&2
+
+  # hard stop: refuses the commit if the plaintext was staged directly
+  # (e.g. `git add -f`) — this is the actual leak path, not just a warning
+  if git diff --cached --name-only | grep -qxF "$path"; then
+    echo "pre-commit: BLOCKED — $path is staged directly. Unstage it: git restore --staged $path" >&2
+    exit 1
+  fi
+
+  [ -f "$path" ] || continue
+  age -e -r "$PUB" -o "$path.cry" "$path"
+
+  # verify the ciphertext actually round-trips before trusting it enough to commit
+  if ! age -d -i "$KEY" "$path.cry" 2>/dev/null | diff -q - "$path" >/dev/null 2>&1; then
+    echo "pre-commit: BLOCKED — encryption of $path failed verification" >&2
+    exit 1
+  fi
+
+  git add "$path.cry"
+done < "$INDEX"

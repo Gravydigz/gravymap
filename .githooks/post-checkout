@@ -1,0 +1,11 @@
+#!/bin/bash
+KEY="$HOME/.config/age/keys.txt"
+INDEX=".age-index"
+[ -f "$INDEX" ] || exit 0
+[ -f "$KEY" ] || { echo "post-checkout: age key not found — skipping decrypt" >&2; exit 0; }
+
+while IFS= read -r path; do
+  [ -z "$path" ] && continue
+  [ -f "$path.cry" ] || continue
+  age -d -i "$KEY" -o "$path" "$path.cry"
+done < "$INDEX"
